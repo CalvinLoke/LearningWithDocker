@@ -37,11 +37,15 @@ While the Docker documentation lists out a wide variety of different arugments f
 | -p      | Publishes port(s) to the host |
 | --expose | Exposes port(s), similar to the publish option |
 | -- name | Assigns a name to the container |
+| -v, --volume | Bind mounts a volume to the container |
 
 ### Detached and interactive
 When running in `detached` mode,the container will run in the background, and will not display any input or output. 
 
 Interactive. 
+
+### Remove
+If the container is not required after exiting, use this argument. This will remove the container after it exits, thus minimizing clutter. Commonly used for testing purposes. 
 
 ### Port publishing
 The run command when used with the port publishing option will publish the port to the host, thus making the container/service available to the outside world. Different services will utilize different ports, and thus one should check the ports utilized by the service that they are deploying. 
@@ -61,6 +65,9 @@ If there is a need to specify the host IP address (eg 192.168.20) modify the com
 Conversely, append the `/udp` if UDP is preferred
 
 `docker run -p 192.168.20:8080:80/udp`
+
+### Volume mounting 
+THis argument mounts the listed directory as the working directory for the container to operate in. 
 
 If you would like to read in-depth about the `docker run`command, I would highly recommend you to read the [document](https://docs.docker.com/engine/reference/commandline/run/).
 

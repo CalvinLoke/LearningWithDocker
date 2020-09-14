@@ -64,6 +64,19 @@ Conversely, append the `/udp` if UDP is preferred
 
 If you would like to read in-depth about the `docker run`command, I would highly recommend you to read the [document](https://docs.docker.com/engine/reference/commandline/run/).
 
+## Docker pull command
+A fresh installation of Docker will lack any images. One can either build an image from scratch, or they can pull an image from a repository. Docker Hub is such a repository, and you can check the variety of images available [here](https://hub.docker.com/).
+
+To pull an image from DockerHub, simply use the following command:
+
+`pull <image name>`
+
+This will simply pull the latest image from the repository. If you would like to pull a specific version, modify the command as follows:
+
+`pull <image name>:<version number>`
+
+This command is not neccessary, and as mentioned earlier, if you are trying to run a container from an image that does not exist locally, Docker will automatically pull the image from the repository. 
+
 # Common commands to manage images and containers
 This section will contain the different commands that are useful to manage your images and containers. Simply copy and paste it into your CLI. 
 

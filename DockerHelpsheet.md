@@ -29,7 +29,7 @@ The `[options]` field will directly affect the behaviour of the container's oper
 
 While the Docker documentation lists out a wide variety of different arugments for the options field, here are the few common ones that are used:
 
-| Command | What it does |
+| Argument | Function |
 |---------|--------------|
 | -d      | Runs the container in detached mode |
 | -it     | Runs the container in interactive mode |
@@ -76,6 +76,21 @@ This will simply pull the latest image from the repository. If you would like to
 `pull <image name>:<version number>`
 
 This command is not neccessary, and as mentioned earlier, if you are trying to run a container from an image that does not exist locally, Docker will automatically pull the image from the repository. 
+
+## Docker exec command
+The `exec` command runs a command in an existing running container. The general format for the `exec` command is as shown:
+
+`docker exec [OPTIONS] <container name> COMMAND [ARG...]`
+
+There are a variety of arguments for the `[OPTIONS]` field, but the common ones are 
+
+| Argument | Function |
+| --- | --- |
+|-d | Runs the container in detached mode |
+| -it | Runs the container in interactive mode |
+| -e | Set environment variables |
+
+Note that the arguments for the `[OPTIONS]` field is similar to that of the `docker run` command. Thus the `docker exec` command can be used to *modify* the behaviour of a running container, even if it was not specified in the original `docker run` command. 
 
 # Common commands to manage images and containers
 This section will contain the different commands that are useful to manage your images and containers. Simply copy and paste it into your CLI. 

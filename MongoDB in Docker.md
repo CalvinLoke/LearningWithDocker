@@ -22,11 +22,15 @@ To to run Mongo as a service, use the `docker run` command.
 
 This command will run a mongo container in detached mode, with published ports of 27017-27019. The name modifier simply gives the container a recognizable name. 
 
-To run MongoDB with a persistent path, modify the `docker run` command by appending `-v /data:/data`. 
+To run MongoDB with a persistent path, modify the `docker run` command by appending `-v mongodata:/data/db`. 
+
+Ensure that the directory is created first using:
+
+`sudo mkdir -p /mongodata`
 
 So the final modified command would be: 
 
-`docker run -d -p 27017-27019:27017-27019 -v /data:/data --name mongoTest mongo`
+`docker run -d -p 27017-27019:27017-27019 -v mongodata:/data/db --name mongoTest mongo`
 
 To access the database, use the `docker exec`command. 
 

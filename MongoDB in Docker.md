@@ -203,6 +203,8 @@ The command to import data in the MongoDB shell is as follows
 
 `mongoimpott --db <database name> --collection <collection name> <path>`
 
+Alternatively, importing data can be done in Compass. 
+
 
 
 

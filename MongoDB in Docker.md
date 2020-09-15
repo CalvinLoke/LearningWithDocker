@@ -194,6 +194,16 @@ To rename a category, `$rename` can be used.
 
 This command will delete the data entry/row based on the search criteria. 
 
+## Sample data for importing
+As there is no proper ingestion methods for the current database, dummy or sample data is required to test the database. 
+
+[This repository is an excellent starting point](https://github.com/ozlerhakan/mongodb-json-files) as it provides sample `.json` files to import data into.
+
+The command to import data in the MongoDB shell is as follows
+
+`mongoimpott --db <database name> --collection <collection name> <path>`
+
+
 
 
 

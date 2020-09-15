@@ -99,6 +99,9 @@ There are a variety of arguments for the `[OPTIONS]` field, but the common ones 
 
 Note that the arguments for the `[OPTIONS]` field is similar to that of the `docker run` command. Thus the `docker exec` command can be used to *modify* the behaviour of a running container, even if it was not specified in the original `docker run` command. 
 
+## Docker network command
+The `docker network` command manages networks. 
+
 # Common commands to manage images and containers
 This section will contain the different commands that are useful to manage your images and containers. Simply copy and paste it into your CLI. 
 

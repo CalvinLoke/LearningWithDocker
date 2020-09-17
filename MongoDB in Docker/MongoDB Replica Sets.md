@@ -16,4 +16,4 @@ If you are not familiar with the docker compose file syntax, [this](https://www.
 
 Make sure you are in the correct directory of the cloned repository
 
-`docker-compose -f MongoDB in Docker/docker-compose.yml up`
+`docker-compose -f MongoDB-in-Docker/docker-compose.yml up`

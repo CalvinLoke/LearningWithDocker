@@ -1,0 +1,52 @@
+version: '3.3'
+
+services:
+ mongoNode1:
+  image: mongo
+  ports: 
+   - '27017:27017'
+  container_name: mongoNode1
+  networks:
+  - mongo-network
+  command:
+   mongod --replSet "rs0" --port 27017
+  volumes:
+    - $HOME/mongocluster/node1:/data/db
+  extra_hosts:
+   - "somehost:127.0.0.1"
+
+ mongoNode2:
+  image: mongo
+  ports: 
+   - '27018:27018'
+  container_name: mongoNode2
+  networks:
+  - mongo-network
+  command:
+   mongod --replSet "rs0" --port 27018 
+  volumes:
+    - $HOME/mongocluster/node2:/data/db
+  extra_hosts:
+   - "somehost:127.0.0.1"    
+  depends_on:
+   - mongoNode1
+
+ mongoNode3:
+  image: mongo
+  ports: 
+   - '27019:27019'
+  container_name: mongoNode3
+  networks:
+  - mongo-network
+  command:
+   mongod --replSet "rs0" --port  27019
+  volumes:
+    - $HOME/mongocluster/node3:/data/db
+  extra_hosts:
+   - "somehost:127.0.0.1"
+  depends_on:
+   - mongoNode2
+ 
+networks:
+ mongo-network:
+  driver: bridge 

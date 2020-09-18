@@ -44,5 +44,8 @@ Modify the node names, port numbers and or Repica Set name if needed. Use [JSCom
 `config={_id:"rs0",members:[{_id:0,host:"mongoNode1:27017"},{_id:1,host:"mongoNode2:27018"},{_id:2,host:"mongoNode3:27019"}]};`
 
 ## Run the Replica Set configuration command
-`
+`rs.initiate(config)`
+
+## Verify that the Replica Set is up and running 
+`rs.status()`
 

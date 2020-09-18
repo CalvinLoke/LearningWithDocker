@@ -8,12 +8,22 @@ Replica Sets are a group of MongoDB instances/nodes working together to provide 
 If you are not familiar with the docker compose file syntax, [this](https://www.composerize.com/) is a very useful tool to convert standard `docker-run` commands into docker compose files. 
 
 # Procedure
+## Pre-requisites 
 ## Cloning this repository
 
 `git clone https://github.com/CalvinLoke/LearningWithDocker`
 
 ## Running the Docker nodes
-
 Make sure you are in the correct directory of the cloned repository
 
 `docker-compose -f MongoDB-in-Docker/docker-compose.yml up`
+
+Modify the `docker-compose` command with `-d` if you need it to run in `detached` mode. If not, you will need to access the containers from another terminal instance. 
+
+## Verify that the Docker nodes are running 
+`docker ps`
+
+## Login to one of the Docker instances
+Any of the 3 containers will do, but the first node is preferred. 
+`docker exec -it monogoNode1 mongo`
+

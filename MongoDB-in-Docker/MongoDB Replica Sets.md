@@ -25,5 +25,24 @@ Modify the `docker-compose` command with `-d` if you need it to run in `detached
 
 ## Login to one of the Docker instances
 Any of the 3 containers will do, but the first node is preferred. 
+
 `docker exec -it monogoNode1 mongo`
+
+## Copy and paste the following configuration settings
+```
+config = {
+ _id: "rs0",
+ members:[
+  {_id:0, "host": "mongoNode1:27017"}, 
+  {_id:1, "host": "mongoNode2:27018"},  
+  {_id:2, "host": "mongoNode3:27019"},  
+ ]
+};
+```
+
+Modify the node names, port numbers and or Repica Set name if needed. Use [JSCompress](https://jscompress.com/) if you need. The following is the compressed version:
+`config={_id:"rs0",members:[{_id:0,host:"mongoNode1:27017"},{_id:1,host:"mongoNode2:27018"},{_id:2,host:"mongoNode3:27019"}]};`
+
+## Run the Replica Set configuration command
+`
 

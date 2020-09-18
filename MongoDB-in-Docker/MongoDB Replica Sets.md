@@ -49,3 +49,53 @@ Modify the node names, port numbers and or Repica Set name if needed. Use [JSCom
 ## Verify that the Replica Set is up and running 
 `rs.status()`
 
+## Verify the replication 
+In order to veify that the Replica Set is working, we would need to input some dummy/sample data. 
+
+`show dbs`
+
+Note that this command can only be run on the **Primary** node. Check that the current node you are in by identifying the prompt. It should be something along the lines of:
+
+`<Replica Set Name>:PRIMARY> ` or `rs0:PRIMARY>` in the case of this example
+
+### Add a test database to the current container 
+`use <test DB name>` or `use testDB` to automatically create a new database with the desired name and set as the current active database to be used. 
+
+### Add a collection 
+`db.createCollection('<collectionName>') or db.createCollection('sampleCollection')` to add a collection to the database
+
+### Add some sample data
+`db.sampleCollection.insert({ "address0" : "dummyData0" })`
+
+### Verify the data has been added
+`db.sampleCollection.find()` 
+
+Note that this command returns everything in the database. 
+
+### Check secondary nodes
+Logout of the current container either by using `Ctrl + C` or simply by typing `exit`. Login to the secondary node using a similar command:
+
+`docker exec -it monogoNode2 mongo`
+
+Before we can read any data from the secondary nodes, we must first do the following:
+
+`rs.secondaryOk()` or `rs.slaveOk()`. But try not to use the second one as newer versions of MongoDB will not support it. 
+
+Verify that the database can be found on the secondary node using:
+
+`show dbs`
+
+And further verify that the data is present on the secondary node by:
+
+`db.sampleCollection.find()`
+
+If the data can be found on the secondary node, congratulations, the Replica Set is up and running! 
+
+## Shutting down the Replica Set
+To shut down the Replica Set, simply stop the docker instances either by using `Ctrl-C` (if the docker containers are not running in detached mode) or by stopping the docker containers using the `docker container stop` command. 
+
+Note that when you restart the containers, you will not need to reconfigure the Replica Sets as the `docker-compose` file as configured the containers to have bind volumes, meaning that it will have persistent data and configuration settings will carry over. 
+
+# Removing the Replica Set 
+< Will be adding this in due time> 
+

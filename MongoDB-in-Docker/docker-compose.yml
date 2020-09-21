@@ -12,8 +12,6 @@ services:
    mongod --replSet "rs0" --port 27017
   volumes:
     - $HOME/mongocluster/node1:/data/db
-  extra_hosts:
-   - "somehost:127.0.0.1"
 
  mongoNode2:
   image: mongo
@@ -25,9 +23,7 @@ services:
   command:
    mongod --replSet "rs0" --port 27018 
   volumes:
-    - $HOME/mongocluster/node2:/data/db
-  extra_hosts:
-   - "somehost:127.0.0.1"    
+    - $HOME/mongocluster/node2:/data/db  
   depends_on:
    - mongoNode1
 
@@ -42,8 +38,6 @@ services:
    mongod --replSet "rs0" --port  27019
   volumes:
     - $HOME/mongocluster/node3:/data/db
-  extra_hosts:
-   - "somehost:127.0.0.1"
   depends_on:
    - mongoNode2
  

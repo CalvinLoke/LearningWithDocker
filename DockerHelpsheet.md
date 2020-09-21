@@ -105,8 +105,12 @@ The `docker network` command manages networks.
 # Common commands to manage images and containers
 This section will contain the different commands that are useful to manage your images and containers. Simply copy and paste it into your CLI. 
 
+## Stopping all running containers
+`docker stop $(docker ps -aq)`
+
 ## Removing stopped containers
 `$ docker rm $(docker ps -a -q)`
+
 
 
 

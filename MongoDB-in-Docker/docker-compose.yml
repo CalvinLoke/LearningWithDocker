@@ -1,6 +1,7 @@
 version: '3.3'
 
 services:
+ # First node
  mongoNode1:
   image: mongo
   ports: 
@@ -12,7 +13,7 @@ services:
    mongod --replSet "rs0" --port 27017
   volumes:
     - $HOME/mongocluster/node1:/data/db
-
+ # Second node
  mongoNode2:
   image: mongo
   ports: 
@@ -26,7 +27,7 @@ services:
     - $HOME/mongocluster/node2:/data/db  
   depends_on:
    - mongoNode1
-
+ # Third node
  mongoNode3:
   image: mongo
   ports: 

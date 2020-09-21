@@ -109,7 +109,7 @@ This section will contain the different commands that are useful to manage your 
 `docker stop $(docker ps -aq)`
 
 ## Removing stopped containers
-`$ docker rm $(docker ps -a -q)`
+`docker rm $(docker ps -a -q)`
 
 
 

@@ -54,9 +54,31 @@ For learning purposes, you might wish to create a second collection as a proof o
 `sh.enableSharding('testDB')`
 
 ## Shard the test collection
+Depends on your current deployment, the sharding process will differ depending on whether an existing collection *already has data in it* or is an *empty collection that does not have any data in it*. So do check carefully before proceeding. 
+
+### Sharding an empty/new collection
 `sh.shardCollection('testDB.testCollection0', {"field0" : "hashed"} )`
 
 Note that the parameters `{"field0" : "hashed"}` will be the field used as the shard key. It can either be `hashed` `1` for hashed and range based sharding respectively. For more information regarding the type of shard key used, please refer to [this](https://docs.mongodb.com/manual/reference/command/shardCollection/#dbcmd.shardCollection). 
+
+It is important that if you wish to populate this collection afterwards, `field0` should be one of the fields for the data that you are going to import. For example, if the resulting collection is going to be `books` and you would wish to shard the collection based the `title`, replace `field0` with `title` instead. 
+
+Once this has been done, proceed to import data. This can be done using a for-loop or using MongoDB Compass. 
+
+### Sharding an existing collection
+Import some sample/dummy data if needed into `testCollection1` for this demonstration purpose. 
+
+Then create an index for the existing collection
+
+`db.testCollection1.createIndex({ "field0":"hashed" })`
+
+`field0` should be one the fields of the collection. It is recommended that you chooose something like the name or title of the entires as the index. 
+
+Once this is done, proceed to use 
+
+`sh.shardCollection('testDB.testCollection0', {"field0" : "hashed"} )`
+
+With modifications to `field0` and `hashed` if required. 
 
 ## Checking the shard distribution (really only works well if you have more than 1 shard in your shard cluster)
 `db.testCollection0.getShardDistribution()`

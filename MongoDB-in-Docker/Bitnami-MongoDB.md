@@ -23,7 +23,7 @@ Note that the container name for the mongos instance may be different, hence it 
 ## Authentication 
 To authenticate into the mongos instance use the following command:
 
-`mongo admin --username root --password123
+`mongo admin --username root --password123`
 
 By default, the included `docker-compose` file in the cloned repo has set up authentication. If you would like, you could modify the file to remove said authentication by removing the environment variable 
 

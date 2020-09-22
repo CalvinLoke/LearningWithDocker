@@ -38,7 +38,7 @@ This command will list out the different databases that are currently available.
 
 Followed by
 
-`db.auth( root, password123 )`
+`db.auth( "root" , "password123" )`
 
 ## Create a test database
 `use testDB`

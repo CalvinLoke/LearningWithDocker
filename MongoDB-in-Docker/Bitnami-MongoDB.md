@@ -54,7 +54,7 @@ For learning purposes, you might wish to create a second collection as a proof o
 `sh.enableSharding('testDB')`
 
 ## Shard the test collection
-`db.shardCollection('testDB.testCollection0', {"field0" : "hashed"} )`
+`sh.shardCollection('testDB.testCollection0', {"field0" : "hashed"} )`
 
 Note that the parameters `{"field0" : "hashed"}` will be the field used as the shard key. It can either be `hashed` `1` for hashed and range based sharding respectively. For more information regarding the type of shard key used, please refer to [this](https://docs.mongodb.com/manual/reference/command/shardCollection/#dbcmd.shardCollection). 
 

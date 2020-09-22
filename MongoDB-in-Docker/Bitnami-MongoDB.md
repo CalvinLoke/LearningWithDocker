@@ -76,7 +76,7 @@ Then create an index for the existing collection
 
 Once this is done, proceed to use 
 
-`sh.shardCollection('testDB.testCollection0', {"field0" : "hashed"} )`
+`sh.shardCollection('testDB.testCollection1', {"field0" : "hashed"} )`
 
 With modifications to `field0` and `hashed` if required. 
 

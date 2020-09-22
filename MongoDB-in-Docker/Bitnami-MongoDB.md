@@ -7,6 +7,124 @@ An alternative to using the original MongoDB image is to use the BitNami image i
 ## Cloning the repository 
 `https://github.com/bitnami/bitnami-docker-mongodb-sharded`
 
+## Docker compose file raw dumps
+Alternatively, here is the `docker-compose` file for singe-shard, no replica-set deployment:
+
+### Single-shard, no-replica-set deployment
+
+```
+version: '2'
+
+services:
+  mongodb-sharded:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-sharded
+      - MONGODB_SHARDING_MODE=mongos
+      - MONGODB_CFG_PRIMARY_HOST=mongodb-cfg
+      - MONGODB_CFG_REPLICA_SET_NAME=cfgreplicaset
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_ROOT_PASSWORD=password123
+    ports:
+      - "27017:27017"
+
+  mongodb-shard0:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard0
+      - MONGODB_SHARDING_MODE=shardsvr
+      - MONGODB_MONGOS_HOST=mongodb-sharded
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_REPLICA_SET_NAME=shard0
+    volumes:
+      - 'shard0_data:/bitnami'
+
+  mongodb-cfg:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-cfg
+      - MONGODB_SHARDING_MODE=configsvr
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_REPLICA_SET_NAME=cfgreplicaset
+    volumes:
+      - 'cfg_data:/bitnami'
+
+volumes:
+  shard0_data:
+    driver: local
+  cfg_data:
+    driver: local
+    
+```
+
+### Multi-shard, no replica-set deployment
+
+```
+version: '3'
+
+services:
+  mongodb-sharded:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-sharded
+      - MONGODB_SHARDING_MODE=mongos
+      - MONGODB_CFG_PRIMARY_HOST=mongodb-cfg
+      - MONGODB_CFG_REPLICA_SET_NAME=cfgreplicaset
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_ROOT_PASSWORD=password123
+    ports:
+      - "27017:27017"
+
+  mongodb-shard0:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard0
+      - MONGODB_SHARDING_MODE=shardsvr
+      - MONGODB_MONGOS_HOST=mongodb-sharded
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_REPLICA_SET_NAME=shard0   
+
+  mongodb-shard1:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard1
+      - MONGODB_SHARDING_MODE=shardsvr
+      - MONGODB_MONGOS_HOST=mongodb-sharded
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_REPLICA_SET_NAME=shard1
+      
+  mongodb-shard2:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard2
+      - MONGODB_SHARDING_MODE=shardsvr
+      - MONGODB_MONGOS_HOST=mongodb-sharded
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_REPLICA_SET_NAME=shard2      
+
+      
+  mongodb-cfg:
+    image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-cfg
+      - MONGODB_SHARDING_MODE=configsvr
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_REPLICA_SET_NAME=cfgreplicaset
+```
+Note that there are no volume binds for the multi-shard set up. (Planning to add them back once I fully debug the deployment.)
+
 After cloning, change the active directory to the cloned repo. 
 
 # Running a MongoDB sharded cluster (1 shard only)

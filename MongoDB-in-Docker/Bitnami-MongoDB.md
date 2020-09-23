@@ -61,7 +61,7 @@ volumes:
     
 ```
 
-### Multi-shard with replication (1P 2S)
+### Multi-shard no replication
 
 ```
 version: '3'
@@ -125,7 +125,7 @@ services:
 ```
 Note that there are no volume binds for the multi-shard set up. (Planning to add them back once I fully debug the deployment.)
 
-### Multi-shard (3), replica-set cluster
+### Multi-shard (3) with replication (1P 2S, for config and shards)
 
 ```
 version: '3'

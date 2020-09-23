@@ -61,7 +61,7 @@ volumes:
     
 ```
 
-### Multi-shard, no replica-set deployment
+### Multi-shard with replication (1P 2S)
 
 ```
 version: '3'

@@ -292,7 +292,18 @@ services:
       - MONGODB_SHARDING_MODE=configsvr      
 ```
 
-After cloning, change the active directory to the cloned repo. 
+## To add
+Persistent data, through the use of bind volumes. As I was creating these docker compose files for purely testing purposes, I omitted a bind volume. Do add if you would like to deploy this for longer periods of times and would like to have persistent data. 
+
+Improve container names. As of now, I have left the container names as their default from the original docker-compose file that I referenced from Bitnami's repository. They are unncessarily long and make it difficult to identify in situtaitons whereby the CLI has limited working space. Do change it if you would prefer shorter container names in Docker.
+
+Incorporate into Docker Swarm/Kubernetes: While it works excellently on a single host machine, it does not fair very well practically. Each memeber of the replica set should ideally have their own host to ensure redundency in the event of host failure. Hence, a container orchestration tool like Kubernetes or Docker Swarm would be highly recommended. 
+
+~~After cloning, change the active directory to the cloned repo. ~~ 
+
+It is highly recommended that you create your own docker-compose file based off either the ones that I have included in this document or from Bitnami's repository. This thus allows you to tune the parameters if needed. 
+
+If you are doing this, ensure that you save the docker-compose file in a `.yml` format. 
 
 # Running a MongoDB sharded cluster (1 shard only)
 To begin sharding, simply use the command `docker-compose up` to run the default docker-compose file. This file contains the necesssary environment variables and configurations to set up the sharded cluster and replica sets. No logging into individual clusters to configure clusters required. 

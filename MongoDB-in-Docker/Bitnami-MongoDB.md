@@ -298,7 +298,7 @@ Improve container names. As of now, I have left the container names as their def
 
 Incorporate into Docker Swarm/Kubernetes: While it works excellently on a single host machine, it does not fair very well practically. Each memeber of the replica set should ideally have their own host to ensure redundency in the event of host failure. Hence, a container orchestration tool like Kubernetes or Docker Swarm would be highly recommended. 
 
-~~After cloning, change the active directory to the cloned repo.
+~~After cloning, change the active directory to the cloned repo~~. 
 
 It is highly recommended that you create your own docker-compose file based off either the ones that I have included in this document or from Bitnami's repository. This thus allows you to tune the parameters if needed. 
 

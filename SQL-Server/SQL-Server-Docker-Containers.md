@@ -4,7 +4,17 @@
 This section will contain the basics and information on how to deploy a SQL-Server instance running on Docker. It is based off the original documenation on Microsoft's site.
 
 # Pre-requisites
-Before deploying the server stuff sdsdsds
+Before deploying the server
+
+## Installing SQL Server in Docker
+`docker pull mcr.microsoft.com/mssql/server`
+
+## Running a basic instance of SQL Server
+`docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password1234' -e 'MSSQL_PID=Developer' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest --name sql-server`
+
+## Accessing the instance of SQL Server
+`docker exec -it sql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Password1234`
+
 
 
 https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-deployment?view=sql-server-ver15&pivots=cs1-bash

@@ -50,6 +50,12 @@ Followed by
 
 Note that `GO` is required everytime you wish to read/write/update data in the database.
 
+## Database manipulation inside the container
+To create a database:
+
+`CREATE DATABASE TestDB`
+
+
 
 https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-deployment?view=sql-server-ver15&pivots=cs1-bash
 

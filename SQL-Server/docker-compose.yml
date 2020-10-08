@@ -10,13 +10,4 @@ services:
         ports:
             - "1430:1433"
         container_name: sql-server
-    sql-server2:
-        image: mcr.microsoft.com/mssql/server
-        environment: 
-            - ACCEPT_EULA=Y
-            - SA_PASSWORD=Password1234
-            - MSSQL_PID=Developer
-        ports:
-            - "1431:1433"
-        container_name: sql-server2
     

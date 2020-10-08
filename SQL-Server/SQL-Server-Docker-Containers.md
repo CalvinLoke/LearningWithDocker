@@ -42,8 +42,13 @@ A `1>` appearing on the Command Line will affirm that you have successfully logg
 
 To verify that you can query data from the server, simply query the list of available databases by using 
 
-`SELECT names FROM 
+`SELECT name FROM sys.Databases`
 
+Followed by 
+
+`GO`
+
+Note that `GO` is required everytime you wish to read/write/update data in the database.
 
 
 https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-deployment?view=sql-server-ver15&pivots=cs1-bash

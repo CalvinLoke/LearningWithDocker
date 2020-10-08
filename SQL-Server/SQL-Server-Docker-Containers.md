@@ -29,9 +29,10 @@ services:
         environment: 
             - ACCEPT_EULA=Y
             - SA_PASSWORD=Password1234
-            - MSSQL_PID=Express
+            - MSSQL_PID=Developer
         ports:
-            - "1433:1433"
+            - "1430:1433"
+        container_name: sql-server
         
 ```
 

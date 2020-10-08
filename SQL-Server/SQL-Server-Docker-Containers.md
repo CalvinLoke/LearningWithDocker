@@ -16,10 +16,33 @@ Before deploying the server, ensure that you have Docker running and have the fo
 `docker pull mcr.microsoft.com/mssql/server`
 
 ## Running a basic instance of SQL Server
-`docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password1234' -e 'MSSQL_PID=Developer' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest --name sql-server`
+`docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password1234' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest --name sql-server`
+
+Alternatively, you could create a Docker-compose file with the following parameters:
+
+```
+version: '3'
+
+services:
+    sql-server:
+        image: mcr.microsoft.com/mssql/server
+        environment: 
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=Password1234
+            - MSSQL_PID=Express
+        ports:
+            - "1433:1433"
+        
+```
 
 ## Accessing the instance of SQL Server
-`docker exec -it sql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Password1234`
+`docker exec -it sql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Password1234'`
+
+A `1>` appearing on the Command Line will affirm that you have successfully logged into the SQL Server instance. 
+
+To verify that you can query data from the server, simply query the list of available databases by using 
+
+`SELECT names FROM 
 
 
 

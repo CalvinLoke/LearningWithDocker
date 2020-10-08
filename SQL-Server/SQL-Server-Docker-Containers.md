@@ -4,7 +4,13 @@
 This section will contain the basics and information on how to deploy a SQL-Server instance running on Docker. It is based off the original documenation on Microsoft's site.
 
 # Pre-requisites
-Before deploying the server. I made changes to this line. ????????
+Before deploying the server, ensure that you have Docker running and have the following resources made available:
+
+- At least 6GB Disk Space
+
+- At least 1 GB Memory
+
+- An x64 Processor (2.0GHz or faster)
 
 ## Installing SQL Server in Docker
 `docker pull mcr.microsoft.com/mssql/server`

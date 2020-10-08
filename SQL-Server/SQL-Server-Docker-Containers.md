@@ -62,6 +62,19 @@ To use the newly created database:
 
 Creating a test table:
 
+`CREATE TABLE people (id INT, name NVARCHAR(50), age INT)`
+
+Inserting data into the test table:
+
+`INSERT INTO people (0, 'John', 50); INSERT INTO people(1, 'Mary', 48);`
+
+Remember to use `GO` if you wish for the actions to take place. 
+
+Retrieving all the data from the database: 
+
+`SELECT * FROM people` 
+
+For more commands, please refer to [Transact-SQL](https://docs.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver15)
 
 
 

@@ -56,6 +56,13 @@ To create a database:
 
 `CREATE DATABASE TestDB`
 
+To use the newly created database:
+
+`USE TestDB`
+
+Creating a test table:
+
+
 
 
 https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-deployment?view=sql-server-ver15&pivots=cs1-bash

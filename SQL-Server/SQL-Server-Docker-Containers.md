@@ -66,7 +66,7 @@ Creating a test table:
 
 Inserting data into the test table:
 
-`INSERT INTO people (0, 'John', 50); INSERT INTO people(1, 'Mary', 48);`
+`INSERT INTO people VALUES(0, 'John', 50); INSERT INTO people VALUES(1, 'Mary', 48);`
 
 Remember to use `GO` if you wish for the actions to take place. 
 

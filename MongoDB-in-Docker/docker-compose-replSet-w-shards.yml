@@ -185,30 +185,18 @@ services:
         - 'config_secondary1_data:/bitnami'   
 
 volumes:
-  shard0_primary_data:/bitnami:
-    driver: local
-  shard0_secondary0_data:/bitnami:
-    driver: local   
-  shard0_secondary1_data:/bitnami:
-    driver: local   
+  shard0_primary_data:
+  shard0_secondary0_data:
+  shard0_secondary1_data:
   
-  shard1_primary_data:/bitnami:
-    driver: local
-  shard1_secondary0_data:/bitnami:
-    driver: local   
-  shard1_secondary1_data:/bitnami:
-    driver: local   
+  shard1_primary_data:
+  shard1_secondary0_data:
+  shard1_secondary1_data:
 
-  shard2_primary_data:/bitnami:
-    driver: local
-  shard2_secondary0_data:/bitnami:
-    driver: local   
-  shard2_secondary1_data:/bitnami:
-    driver: local   
+  shard2_primary_data:
+  shard2_secondary0_data:
+  shard2_secondary1_data:
 
-  cfg_primary_data:/bitnami:
-    driver: local
-  cfg_secondary0_data:/bitnami:
-    driver: local   
-  cfg_secondary1_data:/bitnami:
-    driver: local   
+  config_primary_data:
+  config_secondary0_data:
+  config_secondary1_data:

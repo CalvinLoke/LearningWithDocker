@@ -89,6 +89,9 @@ The `exec` command runs a command in an existing running container. The general 
 
 `docker exec [OPTIONS] <container name> COMMAND [ARG...]`
 
+### Docker exec command as root
+`docker exec -u 0 -it <container-name> bash`
+
 There are a variety of arguments for the `[OPTIONS]` field, but the common ones are 
 
 | Argument | Function |
@@ -101,6 +104,14 @@ Note that the arguments for the `[OPTIONS]` field is similar to that of the `doc
 
 ## Docker network command
 The `docker network` command manages networks. 
+
+## Docker file management
+
+### Copying files INTO container
+`docker cp <file-name> <container-name>:/<path-to-copy>`
+
+### Copying files OUT OF container
+`docker cp <container-name>:/<path-to-copy> <file-name>`
 
 # Common commands to manage images and containers
 This section will contain the different commands that are useful to manage your images and containers. Simply copy and paste it into your CLI. 

@@ -22,7 +22,9 @@ services:
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
-      - MONGODB_REPLICA_SET_NAME=shard0   
+      - MONGODB_REPLICA_SET_NAME=shard0
+    volumes:
+      - 'shard0_primary_data:/bitnami'   
 
   mongodb-shard0-secondary0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -35,7 +37,9 @@ services:
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_REPLICA_SET_NAME=shard0      
+      - MONGODB_REPLICA_SET_NAME=shard0     
+    volumes:
+      - 'shard0_secondary0_data:/bitnami'    
       
   mongodb-shard0-secondary1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -48,7 +52,9 @@ services:
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_REPLICA_SET_NAME=shard0         
+      - MONGODB_REPLICA_SET_NAME=shard0     
+    volumes: 
+        - 'shard0_secondary1_data:/bitnami'      
       
   mongodb-shard1-primary:  
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -60,9 +66,10 @@ services:
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_REPLICA_SET_NAME=shard1   
+    volumes: 
+        - 'shard1_primary_data:/bitnami'   
 
   mongodb-shard1-secondary0:
-
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-shard0-primary
@@ -73,7 +80,9 @@ services:
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_REPLICA_SET_NAME=shard1      
+      - MONGODB_REPLICA_SET_NAME=shard1     
+    volumes: 
+        - 'shard1_secondary0_data:/bitnami'    
       
   mongodb-shard1-secondary1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -87,6 +96,8 @@ services:
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
       - MONGODB_REPLICA_SET_NAME=shard1     
+    volumes: 
+        - 'shard1_secondary1_data:/bitnami'   
       
   mongodb-shard2-primary:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -98,6 +109,8 @@ services:
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_REPLICA_SET_NAME=shard2   
+    volumes: 
+      - 'shard2_primary_data:/bitnami'   
 
   mongodb-shard2-secondary0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -111,6 +124,8 @@ services:
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
       - MONGODB_REPLICA_SET_NAME=shard2      
+    volumes: 
+        - 'shard2_secondary0_data:/bitnami'   
       
   mongodb-shard2-secondary1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -123,7 +138,9 @@ services:
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_REPLICA_SET_NAME=shard2         
+      - MONGODB_REPLICA_SET_NAME=shard2  
+    volumes: 
+        - 'shard2_secondary1_data:/bitnami'         
           
   mongodb-cfg-primary:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -134,7 +151,9 @@ services:
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_REPLICA_SET_NAME=cfgreplicaset
-      
+    volumes: 
+        - 'config_primary_data:/bitnami'   
+    
   mongodb-cfg-secondary0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
@@ -147,6 +166,8 @@ services:
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_REPLICA_SET_NAME=cfgreplicaset
       - MONGODB_SHARDING_MODE=configsvr  
+    volumes: 
+        - 'config_secondary0_data:/bitnami'   
       
   mongodb-cfg-secondary1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
@@ -160,3 +181,34 @@ services:
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_REPLICA_SET_NAME=cfgreplicaset
       - MONGODB_SHARDING_MODE=configsvr      
+    volumes: 
+        - 'config_secondary1_data:/bitnami'   
+
+volumes:
+  shard0_primary_data:/bitnami:
+    driver: local
+  shard0_secondary0_data:/bitnami:
+    driver: local   
+  shard0_secondary1_data:/bitnami:
+    driver: local   
+  
+  shard1_primary_data:/bitnami:
+    driver: local
+  shard1_secondary0_data:/bitnami:
+    driver: local   
+  shard1_secondary1_data:/bitnami:
+    driver: local   
+
+  shard2_primary_data:/bitnami:
+    driver: local
+  shard2_secondary0_data:/bitnami:
+    driver: local   
+  shard2_secondary1_data:/bitnami:
+    driver: local   
+
+  cfg_primary_data:/bitnami:
+    driver: local
+  cfg_secondary0_data:/bitnami:
+    driver: local   
+  cfg_secondary1_data:/bitnami:
+    driver: local   

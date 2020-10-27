@@ -72,7 +72,7 @@ services:
   mongodb-shard1-secondary0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard0-primary
+      - mongodb-shard1-primary
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard1-secondary0
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -87,7 +87,7 @@ services:
   mongodb-shard1-secondary1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard0-primary
+      - mongodb-shard1-primary
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard1-secondary1
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -115,7 +115,7 @@ services:
   mongodb-shard2-secondary0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard0-primary
+      - mongodb-shard2-primary
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard2-secondary0
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -130,7 +130,7 @@ services:
   mongodb-shard2-secondary1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard0-primary
+      - mongodb-shard2-primary
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-shard2-secondary1
       - MONGODB_REPLICA_SET_MODE=secondary

@@ -122,6 +122,9 @@ This section will contain the different commands that are useful to manage your 
 ## Removing stopped containers
 `docker rm $(docker ps -a -q)`
 
+## Removing volumes 
+`docker volume rm $(docker volume ls -q)`
+
 ## Uninstalling/Removing docker from your system
 
 `sudo apt-get purge docker-ce docker-ce-cli containerd.io`

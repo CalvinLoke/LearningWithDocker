@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  mongodb-sharded:
+  mongosInstance:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongosInstance
@@ -13,7 +13,7 @@ services:
     ports:
       - "27017:27017"
 
-  mongodb-shard0-primary:
+  mongoShard0-P0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard0-P0
@@ -26,7 +26,7 @@ services:
     volumes:
       - 'shard0_primary_data:/bitnami'   
 
-  mongodb-shard0-secondary0:
+  mongoShard0-S0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-shard0-primary
@@ -41,7 +41,7 @@ services:
     volumes:
       - 'shard0_secondary0_data:/bitnami'    
       
-  mongodb-shard0-secondary1:
+  mongoShard0-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-shard0-primary
@@ -56,7 +56,7 @@ services:
     volumes: 
         - 'shard0_secondary1_data:/bitnami'      
       
-  mongodb-shard1-primary:  
+  mongoShard1-P0:  
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard1-P0
@@ -69,7 +69,7 @@ services:
     volumes: 
         - 'shard1_primary_data:/bitnami'   
 
-  mongodb-shard1-secondary0:
+  mongoShard1-S0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-shard1-primary
@@ -84,7 +84,7 @@ services:
     volumes: 
         - 'shard1_secondary0_data:/bitnami'    
       
-  mongodb-shard1-secondary1:
+  mongoShard1-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-shard1-primary
@@ -99,7 +99,7 @@ services:
     volumes: 
         - 'shard1_secondary1_data:/bitnami'   
       
-  mongodb-shard2-primary:
+  mongoShard2-P0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard2-P0
@@ -112,7 +112,7 @@ services:
     volumes: 
       - 'shard2_primary_data:/bitnami'   
 
-  mongodb-shard2-secondary0:  
+  mongoShard2-S0:  
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-shard2-primary
@@ -127,7 +127,7 @@ services:
     volumes: 
         - 'shard2_secondary0_data:/bitnami'   
       
-  mongodb-shard2-secondary1:
+  mongoShard2-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-shard2-primary
@@ -142,7 +142,7 @@ services:
     volumes: 
         - 'shard2_secondary1_data:/bitnami'         
           
-  mongodb-cfg-primary:
+  mongoConfig-P0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoConfig-P0
@@ -154,7 +154,7 @@ services:
     volumes: 
         - 'config_primary_data:/bitnami'   
     
-  mongodb-cfg-secondary0:
+  mongoConfig-S0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-cfg-primary
@@ -169,7 +169,7 @@ services:
     volumes: 
         - 'config_secondary0_data:/bitnami'   
       
-  mongodb-cfg-secondary1:
+  mongoConfig-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
       - mongodb-cfg-primary

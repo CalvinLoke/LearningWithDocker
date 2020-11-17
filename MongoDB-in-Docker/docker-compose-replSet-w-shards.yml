@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  mongosInstance:
+  mongodb-sharded:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     environment:
-      - MONGODB_ADVERTISED_HOSTNAME=mongosInstance
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-sharded
       - MONGODB_SHARDING_MODE=mongos
       - MONGODB_CFG_PRIMARY_HOST=mongoConfig-P0
       - MONGODB_CFG_REPLICA_SET_NAME=cfgreplicaset
@@ -18,7 +18,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard0-P0
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_MONGOS_HOST=mongosInstance
+      - MONGODB_MONGOS_HOST=mongodb-sharded
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
@@ -61,7 +61,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard1-P0
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_MONGOS_HOST=mongosInstance
+      - MONGODB_MONGOS_HOST=mongodb-sharded
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
@@ -104,7 +104,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard2-P0
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_MONGOS_HOST=mongosInstance
+      - MONGODB_MONGOS_HOST=mongodb-sharded
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123

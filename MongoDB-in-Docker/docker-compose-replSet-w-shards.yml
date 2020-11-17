@@ -6,7 +6,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongosInstance
       - MONGODB_SHARDING_MODE=mongos
-      - MONGODB_CFG_PRIMARY_HOST=mongodb-cfg-primary
+      - MONGODB_CFG_PRIMARY_HOST=mongoConfig-P0
       - MONGODB_CFG_REPLICA_SET_NAME=cfgreplicaset
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_ROOT_PASSWORD=password123
@@ -18,7 +18,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard0-P0
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_MONGOS_HOST=mongodb-sharded
+      - MONGODB_MONGOS_HOST=mongosInstance
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
@@ -33,7 +33,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard0-S0
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-shard0-primary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongoShard0-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
@@ -48,7 +48,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard0-S1
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-shard0-primary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongoShard0-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
@@ -61,7 +61,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard1-P0
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_MONGOS_HOST=mongodb-sharded
+      - MONGODB_MONGOS_HOST=mongosInstance
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
@@ -76,7 +76,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard1-S0
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-shard1-primary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongoShard1-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
@@ -91,7 +91,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard1-S1
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-shard1-primary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongoShard1-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
@@ -104,7 +104,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard2-P0
       - MONGODB_SHARDING_MODE=shardsvr
-      - MONGODB_MONGOS_HOST=mongodb-sharded
+      - MONGODB_MONGOS_HOST=mongosInstance
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
@@ -119,7 +119,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard2-S0
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-shard2-primary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongoShard2-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
@@ -134,7 +134,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard2-S1
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-shard2-primary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongoShard2-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_SHARDING_MODE=shardsvr
@@ -161,7 +161,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoConfig-S0
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_PRIMARY_HOST=mongodb-cfg-primary
+      - MONGODB_PRIMARY_HOST=mongoConfig-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_REPLICA_SET_NAME=cfgreplicaset
@@ -176,7 +176,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoConfig-S1
       - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_PRIMARY_HOST=mongodb-cfg-primary
+      - MONGODB_PRIMARY_HOST=mongoConfig-P0
       - MONGODB_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
       - MONGODB_REPLICA_SET_NAME=cfgreplicaset

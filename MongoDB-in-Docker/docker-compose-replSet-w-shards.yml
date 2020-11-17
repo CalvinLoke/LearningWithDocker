@@ -29,7 +29,7 @@ services:
   mongoShard0-S0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard0-primary
+      - mongoShard0-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard0-S0
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -44,7 +44,7 @@ services:
   mongoShard0-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard0-primary
+      - mongoShard0-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard0-S1
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -72,7 +72,7 @@ services:
   mongoShard1-S0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard1-primary
+      - mongoShard1-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard1-S0
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -87,7 +87,7 @@ services:
   mongoShard1-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard1-primary
+      - mongoShard1-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard1-S1
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -115,7 +115,7 @@ services:
   mongoShard2-S0:  
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard2-primary
+      - mongoShard2-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard2-S0
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -130,7 +130,7 @@ services:
   mongoShard2-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-shard2-primary
+      - mongoShard2-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoShard2-S1
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -157,7 +157,7 @@ services:
   mongoConfig-S0:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-cfg-primary
+      - mongoConfig-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoConfig-S0
       - MONGODB_REPLICA_SET_MODE=secondary
@@ -172,7 +172,7 @@ services:
   mongoConfig-S1:
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     depends_on:
-      - mongodb-cfg-primary
+      - mongoConfig-P0
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongoConfig-S1
       - MONGODB_REPLICA_SET_MODE=secondary

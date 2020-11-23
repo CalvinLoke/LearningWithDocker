@@ -2,6 +2,7 @@ version: '3'
 
 services:
   mongodb-sharded:
+    container_name: mongoDB-sharded
     image: 'docker.io/bitnami/mongodb-sharded:4.4-debian-10'
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-sharded
